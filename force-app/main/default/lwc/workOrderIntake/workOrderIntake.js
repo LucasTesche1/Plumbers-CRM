@@ -1,0 +1,81 @@
+import { LightningElement, track } from 'lwc';
+import submitWorkOrder from '@salesforce/apex/WorkOrderIntakeController.submitWorkOrder';
+
+export default class WorkOrderIntake extends LightningElement {
+    @track name='';
+    @track phone='';
+    @track email='';
+    @track address='';   
+    @track description='';
+    @track preferredTime='';
+    @track estimatedCost=''; 
+    @track fileIds=[];
+    @track showSucess = false;
+    
+    get timeOptions(){
+        return [
+            {label:'Morning', value:'Morning'},
+            {label:'Afternoon', value:'Afternoon'},
+            {label:'Evening', value:'Evening'}
+        ];
+    }
+
+    handleChange(event) {
+        const field = event.target.name || event.target.dataset.field;
+        this[field] = event.target.value;
+    }
+
+
+    handleUploadFinished(event){
+        const uploadedFiles = event.detail.files;
+        this.fileIds = uploadedFiles.map(f => f.documentId);
+    }
+    
+    resetForm(){
+        this.name = '',
+        this.phone = '',
+        this.email = '',
+        this.address = '',
+        this.description = '',
+        this.preferredTime = '',
+        this.estimatedCost='',
+        this.fileIds = []
+    }
+
+
+    async handleSubmit(){
+        const cost = this.estimatedCost ? parseFloat(this.estimatedCost) : 0.0;
+        console.log('Payload enviado ao Apex:', {
+            name: this.name,
+            phone: this.phone,
+            email: this.email,
+            address: this.address,
+            description: this.description,
+            preferredTime: this.preferredTime,
+            estimatedCost: cost,
+            fileIds: this.fileIds
+        });
+
+        try{
+            await submitWorkOrder({
+                name: this.name,
+                phone: this.phone,
+                email: this.email,
+                address: this.address,
+                description: this.description,
+                preferredTime: this.preferredTime,
+                estimatedCost: cost,
+                fileIds: this.fileIds
+            });
+
+            this.showSucess = true;
+            this.resetForm();
+
+            console.log('Work order succesfully submited');
+
+        }catch (error){
+            console.error('Error submiting work order: ', error);
+        }
+    }
+
+}
