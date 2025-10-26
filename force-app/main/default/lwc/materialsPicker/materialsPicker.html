@@ -1,0 +1,28 @@
+<template>
+    <div class="slds-box slds-m-top_small">
+        <lightning-input 
+            label="Material" 
+            value={name} 
+            onchange={handleNameChange}>
+        </lightning-input>
+
+        <lightning-input 
+            label="Quantidade" 
+            type="number" 
+            value={quantity} 
+            onchange={handleQuantityChange}>
+        </lightning-input>
+
+        <lightning-input 
+            label="Custo" 
+            type="number" 
+            value={cost} 
+            onchange={handleCostChange}>
+        </lightning-input>
+
+        <lightning-button 
+            label="Adicionar Material" 
+            onclick={handleAdd}>
+        </lightning-button>
+    </div>
+</template>

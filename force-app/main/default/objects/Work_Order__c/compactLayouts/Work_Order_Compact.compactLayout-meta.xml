@@ -3,8 +3,8 @@
     <fullName>Work_Order_Compact</fullName>
     <fields>Name</fields>
     <fields>Status__c</fields>
-    <fields>Assigned_Tech__c</fields>
     <fields>Estimated_Cost__c</fields>
     <fields>Final_Cost__c</fields>
+    <fields>Assigned_Tech__c</fields>
     <label>Work Order Compact</label>
 </CompactLayout>

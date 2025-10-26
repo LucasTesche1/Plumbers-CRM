@@ -1,0 +1,71 @@
+<template>
+    <lightning-card title="My Work Orders" icon-name="utility:approval">
+        <template if:false={showForm}>
+            <div class="slds-p-around_medium">
+                <template for:each={workOrders} for:item="order">
+                    <div key={order.Id} class="slds-box slds-m-vertical_small">
+                        <p><b>{order.Name}</b></p>
+                        <p>{order.Description__c}</p>
+                        <p>Status: {order.Status__c}</p>
+                        <p>Technician: {order.Assigned_Tech__r.Name}</p>
+                        <lightning-button 
+                            label="Select" 
+                            data-id={order.Id} 
+                            variant="brand"
+                            class="slds-m-top_small"
+                            onclick={handleSelectOrder}>
+                        </lightning-button>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <template if:true={showForm}>
+            <div class="slds-p-around_medium">
+                <h3 class="slds-text-heading_small slds-m-bottom_small">
+                    Complete Work Order
+                </h3>
+
+                <lightning-input 
+                    label="Hours Worked" 
+                    type="number" 
+                    value={hoursWorked}
+                    onchange={handleHoursChange}>
+                </lightning-input>
+
+                <lightning-textarea 
+                    label="Service Description" 
+                    value={serviceDesc}
+                    onchange={handleServiceDescChange}>
+                </lightning-textarea>
+
+                <c-materials-picker onaddmaterial={handleAddMaterial}></c-materials-picker>
+
+                <template if:true={materials.length}>
+                    <div class="slds-m-top_small slds-box slds-m-bottom_small">
+                        <p><b>Added Materials:</b></p>
+                        <template for:each={materials} for:item="mat">
+                            <div key={mat.id} class="slds-p-around_xx-small">
+                                <p>{mat.materialName} - Qty: {mat.quantity} - Unit Price: ${mat.cost}</p>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <lightning-file-upload
+                    label="Upload Photos"
+                    name="fileUploader"
+                    multiple
+                    accept=".jpg,.png,.jpeg">
+                </lightning-file-upload>
+
+                <lightning-button 
+                    label="Finish Job" 
+                    variant="success" 
+                    class="slds-m-top_medium"
+                    onclick={handleFinalizeJob}>
+                </lightning-button>
+            </div>
+        </template>
+    </lightning-card>
+</template>
