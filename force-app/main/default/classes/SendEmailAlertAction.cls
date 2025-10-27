@@ -32,7 +32,7 @@ public with sharing class SendEmailAlertAction{
                     + '  <div class="container">'
                     + '    <div class="header">✅ Work Order Confirmation</div>'
                     + '    <div class="details">'
-                    + '      <p>Hello <strong>' + order.Customer__r.Name + '</strong>,</p>'
+                    + '      <p>Hello!</p>'
                     + '      <p>Your request has been succefully register! Here it is your order details:</p>'
                     + '      <p><strong>Number:</strong> ' + order.Name + '</p>'
                     + '      <p><strong>Preferred Time:</strong> ' + String.valueOf(order.Preferred_Time__c) + '</p>'
