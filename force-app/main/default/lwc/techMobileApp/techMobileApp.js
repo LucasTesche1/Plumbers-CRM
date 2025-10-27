@@ -42,7 +42,7 @@ export default class TechMobileApp extends LightningElement {
 
     async handleFinalizeJob() {
         if (!this.selectedOrderId) {
-            console.error('Work order ID está faltando!');
+            console.error('Work order ID está faltando');
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: 'Erro',
@@ -64,7 +64,7 @@ export default class TechMobileApp extends LightningElement {
                 this.dispatchEvent(
                     new ShowToastEvent({
                         title: 'Sucesso',
-                        message: `Ordem de serviço ${result.workOrderId} finalizada com sucesso!`,
+                        message: `Work order ${result.workOrderId} succefully closed!`,
                         variant: 'success',
                     })
                 );
