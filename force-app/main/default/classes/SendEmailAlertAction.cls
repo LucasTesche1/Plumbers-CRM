@@ -41,7 +41,7 @@ public with sharing class SendEmailAlertAction{
                     + '    </div>'
                     + '    <div class="footer">'
                     + '      <p>Sincerely,</p>'
-                    + '      <p class="highlight">Service Squad</p>'
+                    + '      <p class="highlight">PLUMBERS CRM Service Squad</p>'
                     + '    </div>'
                     + '  </div>'
                     + '</body>'

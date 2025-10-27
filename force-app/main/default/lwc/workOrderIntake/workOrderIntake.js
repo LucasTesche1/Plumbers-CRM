@@ -1,22 +1,22 @@
 import { LightningElement, track } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import submitWorkOrder from '@salesforce/apex/WorkOrderIntakeController.submitWorkOrder';
 
 export default class WorkOrderIntake extends LightningElement {
-    @track name='';
-    @track phone='';
-    @track email='';
-    @track address='';   
-    @track description='';
-    @track preferredTime='';
-    @track estimatedCost=''; 
-    @track fileIds=[];
-    @track showSucess = false;
-    
-    get timeOptions(){
+    @track name = '';
+    @track phone = '';
+    @track email = '';
+    @track address = '';   
+    @track description = '';
+    @track preferredTime = '';
+    @track estimatedCost = ''; 
+    @track fileIds = [];
+
+    get timeOptions() {
         return [
-            {label:'Morning', value:'Morning'},
-            {label:'Afternoon', value:'Afternoon'},
-            {label:'Evening', value:'Evening'}
+            { label: 'Morning', value: 'Morning' },
+            { label: 'Afternoon', value: 'Afternoon' },
+            { label: 'Evening', value: 'Evening' }
         ];
     }
 
@@ -25,25 +25,23 @@ export default class WorkOrderIntake extends LightningElement {
         this[field] = event.target.value;
     }
 
-
-    handleUploadFinished(event){
+    handleUploadFinished(event) {
         const uploadedFiles = event.detail.files;
         this.fileIds = uploadedFiles.map(f => f.documentId);
     }
-    
-    resetForm(){
-        this.name = '',
-        this.phone = '',
-        this.email = '',
-        this.address = '',
-        this.description = '',
-        this.preferredTime = '',
-        this.estimatedCost='',
-        this.fileIds = []
+
+    resetForm() {
+        this.name = '';
+        this.phone = '';
+        this.email = '';
+        this.address = '';
+        this.description = '';
+        this.preferredTime = '';
+        this.estimatedCost = '';
+        this.fileIds = [];
     }
 
-
-    async handleSubmit(){
+    async handleSubmit() {
         const cost = this.estimatedCost ? parseFloat(this.estimatedCost) : 0.0;
         console.log('Payload enviado ao Apex:', {
             name: this.name,
@@ -56,7 +54,7 @@ export default class WorkOrderIntake extends LightningElement {
             fileIds: this.fileIds
         });
 
-        try{
+        try {
             await submitWorkOrder({
                 name: this.name,
                 phone: this.phone,
@@ -68,14 +66,28 @@ export default class WorkOrderIntake extends LightningElement {
                 fileIds: this.fileIds
             });
 
-            this.showSucess = true;
             this.resetForm();
 
-            console.log('Work order succesfully submited');
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Sucesso!',
+                    message: 'Your service order was created successfully.',
+                    variant: 'success'
+                })
+            );
 
-        }catch (error){
-            console.error('Error submiting work order: ', error);
+            console.log('Work order successfully submitted');
+
+        } catch (error) {
+            console.error('Error submitting work order: ', error);
+
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Sending error',
+                    message: error.body ? error.body.message : 'An error occurred while submitting the work order.',
+                    variant: 'error'
+                })
+            );
         }
     }
-
 }
