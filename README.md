@@ -5,7 +5,7 @@
 
 ---
 
-## Visão Geral do Projeto
+## 🔹 Visão Geral do Projeto
 
 O **Plumbers CRM** foi criado como um **projeto de portfólio completo** com foco em demonstrar domínio sobre o ecossistema Salesforce, desde a modelagem de dados até deploy.  
 
@@ -13,6 +13,19 @@ Ele simula um **sistema de atendimento de encanadores**, em que solicitações d
 
 ### 🔹 Objetivo
 Criar um CRM de ponta a ponta que represente um ciclo real de **Service Management**, incluindo intake público, automações inteligentes e acompanhamento via relatórios.
+
+### 🔹 Imagens do sistema
+
+<div class='display:flex'>
+
+<img width="1919" height="744" alt="{F9FAD82E-D031-41A1-95BB-B4EDF6A0535C}" src="https://github.com/user-attachments/assets/14ffa326-7511-4cb8-84c7-3b871055c329" />
+<img width="1901" height="654" alt="{E271CCD2-EE58-4456-85C4-D137411FCE6A}" src="https://github.com/user-attachments/assets/e834cf0a-4fcf-49ec-b1e2-69b73097c711" />
+<img width="1908" height="879" alt="{65C9A8CB-F820-4427-A272-8CC62059FD15}" src="https://github.com/user-attachments/assets/30514577-0867-4ae2-a853-a3f2129dbf57" />
+<img width="1915" height="499" alt="{7BFFBD38-B45F-40A6-847A-227DDE95DFE3}" src="https://github.com/user-attachments/assets/99b776a2-f190-4c11-822f-2232a5cfc0e1" />
+<img width="1916" height="680" alt="{6D03CA46-1095-4A37-8B38-293B368114D1}" src="https://github.com/user-attachments/assets/3db5509c-be39-4617-85be-4c17ef817f16" />
+<img width="368" height="789" alt="{0B78FF86-EEBB-442F-B4F4-E4195016DE48}" src="https://github.com/user-attachments/assets/1cf7cf82-0a18-460e-8282-0486891fb9ca" />
+
+</div>
 
 ------
 
