@@ -1,7 +1,7 @@
 # 🧰 Plumbers CRM — Salesforce Field Service Management System
 
 > CRM completo desenvolvido na plataforma **Salesforce**, voltado à **gestão de serviços de encanamento** (Plumbing Services).  
-> O projeto combina automação de processos, experiência mobile para técnicos, relatórios dinâmicos e governança de dados — seguindo padrões **SFDX**, **Flows**, **LWC**, e **Apex** para um produto final funcional e escalável.
+> O projeto combina automação de processos, experiência mobile para técnicos, relatórios dinâmicos e governança de dados, seguindo padrões **SFDX**, **Flows**, **LWC**, e **Apex** para um produto final funcional e escalável.
 
 ---
 
